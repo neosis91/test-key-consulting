@@ -1,0 +1,9 @@
+<mat-form-field class="w-full">
+  <mat-label>{{label()}}</mat-label>
+  <input matInput
+         [formControl]="control()"
+         [type]="type()" />
+  @if (control().hasError('required')) {
+    <mat-error>{{label()}} est <strong>requis</strong></mat-error>
+  }
+</mat-form-field>

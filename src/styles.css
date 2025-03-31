@@ -1,3 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("@fontsource/poppins/index.css");
+@import url("@fontsource/inter/index.css");
 @import "tailwindcss";
-body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@theme {
+  --font-poppins: "Poppins", medium;
+  --font-inter: "Inter", regular;
+}
