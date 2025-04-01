@@ -6,3 +6,8 @@
   --font-poppins: "Poppins", medium;
   --font-inter: "Inter", regular;
 }
+
+button {
+  border-radius: 10px !important;
+  border-color: #155EEF !important;
+}

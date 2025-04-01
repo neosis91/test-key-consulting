@@ -27,7 +27,7 @@ export class ProjetService {
   put(projet: Projet): void {
     const projets = this.projets.value;
     const index = projets.findIndex(p => p.id === projet.id);
-    if (index !== -1) {
+    if (index > -1) {
       projets[index] = projet;
       this.projets.next(projets);
     }

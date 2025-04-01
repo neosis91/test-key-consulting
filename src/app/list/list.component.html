@@ -16,7 +16,7 @@
 
   @let projets = $projets | async;
   @for (projet of projets; track $index) {
-    <mat-card class="p-4 mt-4">
+    <mat-card class="p-4 mt-4 bg-white">
       <div class="flex justify-between">
         <div class="flex gap-4">
           <div>
@@ -31,10 +31,18 @@
               <div class="font-inter text-sm text-neutral-600">Demande d'autorisation de travaux</div>
               <div class="text-base font-poppins font-medium text-neutral-900">{{projet.name}}</div>
             </div>
-            <mat-chip-set aria-label="info-projet">
-              <mat-chip [disableRipple]="true" class="bg-black">{{projet.user}}</mat-chip>
-              <mat-chip [disableRipple]="true">Contrat {{projet.contract}}</mat-chip>
-            </mat-chip-set>
+            <div class="flex gap-4">
+              <span class="bg-neutral-900 text-white px-3 py-1 rounded-md text-sm font-inter">{{projet.user}}</span>
+              @if (projet.contract) {
+                <span class="bg-neutral-100  px-3 py-1 rounded-md text-sm font-inter">Contrat {{projet.contract}}</span>
+              }
+            </div>
+            <!--<mat-chip-set>
+              <mat-chip [disableRipple]="true">{{projet.user}}</mat-chip>
+              @if (projet.contract) {
+                <mat-chip [disableRipple]="true">Contrat {{projet.contract}}</mat-chip>
+              }
+            </mat-chip-set>-->
           </div>
         </div>
         <div>
@@ -42,19 +50,7 @@
             <div>
               <div class="font-archivo font-medium text-sm rounded-full py-2 px-4 bg-[#FEF0C7] text-[#DC6803]">Statut</div>
             </div>
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu-projet">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>
-                <mat-icon>edit</mat-icon>
-                <span>Editer</span>
-              </button>
-              <button mat-menu-item (click)="delete(projet)">
-                <mat-icon>delete</mat-icon>
-                <span>Supprimer</span>
-              </button>
-            </mat-menu>
+            <ng-container *ngTemplateOutlet="buttonTemplate; context: {projet: projet}"/>
           </div>
         </div>
 
@@ -63,5 +59,21 @@
   }
 
 </div>
+
+<ng-template #buttonTemplate let-projet="projet">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu-projet">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="edit(projet)">
+      <mat-icon>edit</mat-icon>
+      <span>Editer</span>
+    </button>
+    <button mat-menu-item (click)="delete(projet)">
+      <mat-icon>delete</mat-icon>
+      <span>Supprimer</span>
+    </button>
+  </mat-menu>
+</ng-template>
 
 

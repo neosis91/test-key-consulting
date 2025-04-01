@@ -5,12 +5,14 @@
 </mat-dialog-content>
 <mat-divider />
 <mat-dialog-actions>
-  <div class="flex justify-between w-full">
-    <button mat-stroked-button mat-dialog-close>Annuler</button>
-    <button mat-flat-button
-            [disabled]="formProjetComponent.projectFormGroup.invalid"
-            [mat-dialog-close]="formProjetComponent.projectFormGroup.value">
-      Créer
-    </button>
-  </div>
+  @if (formProjetComponent.projectFormGroup) {
+    <div class="flex justify-between w-full">
+      <button mat-stroked-button mat-dialog-close>Annuler</button>
+      <button mat-flat-button
+              [disabled]="formProjetComponent.projectFormGroup.invalid"
+              [mat-dialog-close]="formProjetComponent.projectFormGroup.value">
+        Créer
+      </button>
+    </div>
+  }
 </mat-dialog-actions>

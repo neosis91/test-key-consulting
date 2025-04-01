@@ -1,0 +1,22 @@
+@let projet = data.projet;
+@if (projet) {
+  <h2 mat-dialog-title>Editer une demande d'autorisation</h2>
+  <mat-divider />
+  <mat-dialog-content>
+    <app-form-projet #formProjetComponent [projet]="projet"/>
+  </mat-dialog-content>
+  <mat-divider />
+  <mat-dialog-actions>
+    @if (formProjetComponent.projectFormGroup) {
+      <div class="flex justify-between w-full">
+        <button mat-stroked-button mat-dialog-close>Annuler</button>
+        <button mat-flat-button
+                [disabled]="formProjetComponent.projectFormGroup.invalid"
+                [mat-dialog-close]="formProjetComponent.projectFormGroup.value">
+          Mettre à jour
+        </button>
+      </div>
+    }
+  </mat-dialog-actions>
+}
+

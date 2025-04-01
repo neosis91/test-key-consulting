@@ -3,13 +3,13 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatCard} from '@angular/material/card';
 import {ProjetService} from './projet.service';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {MatChip, MatChipSet} from '@angular/material/chips';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {Projet} from './list.entities';
 import {MatDialog} from '@angular/material/dialog';
 import {AddProjetComponent} from './form-projet/add-projet/add-projet.component';
-import {ProjectI} from './form-projet/form-projet.component';
+import {EditProjetComponent} from './form-projet/edit-projet/edit-projet.component';
 
 @Component({
   selector: 'app-list',
@@ -24,6 +24,7 @@ import {ProjectI} from './form-projet/form-projet.component';
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
+    NgTemplateOutlet,
 
   ],
   templateUrl: './list.component.html',
@@ -35,6 +36,7 @@ export class ListComponent {
   $projets = this.projetService.$projets;
 
   add() {
+    console.log('add');
     this.dialog
       .open(AddProjetComponent, {
         panelClass: ['w-full', 'h-full', 'md:w-[532px]', 'md:h-[476px]', 'flex', 'justify-center'],
@@ -43,6 +45,23 @@ export class ListComponent {
       if (project) {
         console.log('projectI: ', project);
         this.projetService.post(project as Projet);
+      }
+    });
+  }
+
+  edit(projet: Projet) {
+    console.log('projet edit: ', projet);
+    this.dialog
+      .open(EditProjetComponent, {
+        panelClass: ['w-full', 'h-full', 'md:w-[532px]', 'md:h-[476px]', 'flex', 'justify-center'],
+        data: {
+          projet: projet
+        }
+      })
+      .afterClosed().subscribe((project: Projet) => {
+      if (project) {
+        console.log('projectI: ', project);
+        this.projetService.put(project as Projet);
       }
     });
   }
