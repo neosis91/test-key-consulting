@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {FormProjetComponent, ProjectI} from '../form-projet.component';
+import {FormProjetComponent} from '../form-projet.component';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -9,7 +9,6 @@ import {
 } from '@angular/material/dialog';
 import {MatDivider} from '@angular/material/divider';
 import {MatButton} from '@angular/material/button';
-import {FormGroup} from '@angular/forms';
 import {Projet} from '../../list.entities';
 
 @Component({
