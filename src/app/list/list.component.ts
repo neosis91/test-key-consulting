@@ -3,7 +3,7 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatCard } from '@angular/material/card';
 import { ProjetService } from './projet.service';
-import { AsyncPipe, NgClass, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgClass, NgTemplateOutlet, UpperCasePipe } from '@angular/common';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { Projet } from './list.entities';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { StatusE } from './form-projet/form-projet.component';
 
 @Component({
   selector: 'app-list',
-  imports: [MatIcon, MatButton, MatCard, AsyncPipe, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, NgTemplateOutlet, NgClass],
+  imports: [MatIcon, MatButton, MatCard, AsyncPipe, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, NgTemplateOutlet, NgClass, UpperCasePipe],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })

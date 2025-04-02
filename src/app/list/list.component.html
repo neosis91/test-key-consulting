@@ -55,7 +55,18 @@
               'bg-[#87CEEB] text-[#032B44]': projet.status === StatusE.WORKING,
               'bg-[#C6F4D6] text-[#006400]': projet.status === StatusE.TERMINATE,
               }">
-                {{projet.status}}
+                @switch (projet.status) {
+                  @case (StatusE.PENDING) {
+                    {{'En attente' | uppercase}}
+                  }
+                  @case (StatusE.WORKING) {
+                    {{'En cours' | uppercase}}
+                  }
+                  @case (StatusE.TERMINATE) {
+                    {{'Terminé' | uppercase}}
+                  }
+
+                }
               </div>
             </div>
             <ng-container *ngTemplateOutlet="buttonTemplate; context: {projet: projet}"/>
