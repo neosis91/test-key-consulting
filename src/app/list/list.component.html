@@ -8,7 +8,7 @@
     Gérer les demandes d'autorisation de travaux.
   </span>
     </div>
-    <button mat-flat-button class="rounded-sm bg-blue-600" (click)="add()">
+    <button id="add" mat-flat-button class="rounded-sm bg-blue-600" (click)="add()">
       <mat-icon>add</mat-icon>
       <span class="font-inter text-sm font-medium">Ajouter</span>
     </button>
@@ -75,20 +75,22 @@
 
       </div>
     </mat-card>
+  } @empty {
+    <div>Aucune demande en cours</div>
   }
 
 </div>
 
 <ng-template #buttonTemplate let-projet="projet">
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu-projet">
+  <button id="option" mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu-projet">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="edit(projet)">
+    <button id="edit" mat-menu-item (click)="edit(projet)">
       <mat-icon>edit</mat-icon>
       <span>Editer</span>
     </button>
-    <button mat-menu-item (click)="delete(projet)">
+    <button id="delete" mat-menu-item (click)="delete(projet)">
       <mat-icon>delete</mat-icon>
       <span>Supprimer</span>
     </button>

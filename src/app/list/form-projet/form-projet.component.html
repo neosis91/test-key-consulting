@@ -1,17 +1,21 @@
 @if (projectFormGroup) {
   <form [formGroup]="projectFormGroup" class="flex flex-col justify-around h-full">
     <app-generic-input [label]="'Projet de travaux'"
+                       [id]="'project'"
                        [control]="projectFormGroup.controls['name']"/>
 
     <app-generic-input [label]="'Utilisateur'"
+                       [id]="'user'"
                        [control]="projectFormGroup.controls['user']"/>
 
     <app-generic-input [label]="'Contrat'"
+                       [id]="'contract'"
                        [type]="'number'"
                        [control]="projectFormGroup.controls['contract']"/>
 
     @if (projet()) {
       <app-generic-select [label]="'Statut'"
+                          [id]="'statut'"
                           [control]="projectFormGroup.controls['status']"
                           [items]="status"/>
     }

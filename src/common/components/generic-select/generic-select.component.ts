@@ -13,6 +13,7 @@ export interface GenericSelectI {
   templateUrl: './generic-select.component.html',
 })
 export class GenericSelectComponent {
+  id = input.required<string>();
   label = input.required<string>();
   control = input.required<FormControl>();
   items = input.required<GenericSelectI[]>();

@@ -9,6 +9,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './generic-input.component.css',
 })
 export class GenericInputComponent {
+  id = input.required<string>();
   label = input.required<string>();
   control = input.required<FormControl>();
   type = input<'text' | 'number'>('text');

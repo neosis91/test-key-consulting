@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s"
   },
   "private": true,
   "dependencies": {
@@ -34,8 +37,11 @@
     "@angular-devkit/build-angular": "^19.2.5",
     "@angular/cli": "^19.2.5",
     "@angular/compiler-cli": "^19.2.0",
+    "@compodoc/compodoc": "^1.1.26",
+    "@playwright/test": "^1.51.1",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.17",
     "angular-eslint": "19.3.0",
     "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",

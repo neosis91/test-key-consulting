@@ -1,6 +1,7 @@
 <mat-form-field class="w-full" [appearance]="'outline'">
   <mat-label>{{label()}}</mat-label>
   <input matInput
+         [id]="id()"
          [formControl]="control()"
          [type]="type()" />
   @if (control().hasError('required')) {
