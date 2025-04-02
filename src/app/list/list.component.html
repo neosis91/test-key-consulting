@@ -38,6 +38,7 @@
               }
             </div>
             <!--<mat-chip-set>
+            une autre possibilité avec des chips mais c'est une solution plus lourde
               <mat-chip [disableRipple]="true">{{projet.user}}</mat-chip>
               @if (projet.contract) {
                 <mat-chip [disableRipple]="true">Contrat {{projet.contract}}</mat-chip>
@@ -48,7 +49,14 @@
         <div>
           <div class="flex gap-2 items-center">
             <div>
-              <div class="font-archivo font-medium text-sm rounded-full py-2 px-4 bg-[#FEF0C7] text-[#DC6803]">Statut</div>
+              <div class="font-archivo font-medium text-sm rounded-full py-2 px-4"
+              [ngClass]="{
+              'bg-[#FEF0C7] text-[#DC6803]': projet.status === StatusE.PENDING,
+              'bg-[#87CEEB] text-[#032B44]': projet.status === StatusE.WORKING,
+              'bg-[#C6F4D6] text-[#006400]': projet.status === StatusE.TERMINATE,
+              }">
+                {{projet.status}}
+              </div>
             </div>
             <ng-container *ngTemplateOutlet="buttonTemplate; context: {projet: projet}"/>
           </div>

@@ -3,4 +3,5 @@ export interface Projet {
   name: string;
   user: string;
   contract: number;
+  status: string;
 }

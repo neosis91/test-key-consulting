@@ -1,16 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Projet} from './list.entities';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {StatusE} from './form-projet/form-projet.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetService {
 
-  private projets: BehaviorSubject<Projet[]> = new BehaviorSubject([
-    { id: 1, name: 'Projet de travaux lorem ipsum', user: 'John Doe', contract: 1534885932 }
+  private projets: BehaviorSubject<Projet[]> = new BehaviorSubject<Projet[]>([
+    {id: 1, name: 'Projet de travaux lorem ipsum', user: 'John Doe', contract: 1534885932, status: StatusE.TERMINATE}
   ]);
-  public $projets = this.projets.asObservable();
+  public $projets: Observable<Projet[]> = this.projets.asObservable();
 
   // Récupérer tous les projets ()
   getAll(): Projet[] {

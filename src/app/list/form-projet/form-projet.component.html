@@ -2,10 +2,19 @@
   <form [formGroup]="projectFormGroup" class="flex flex-col justify-around h-full">
     <app-generic-input [label]="'Projet de travaux'"
                        [control]="projectFormGroup.controls['name']"/>
+
     <app-generic-input [label]="'Utilisateur'"
                        [control]="projectFormGroup.controls['user']"/>
+
     <app-generic-input [label]="'Contrat'"
                        [type]="'number'"
                        [control]="projectFormGroup.controls['contract']"/>
+
+    @if (projet()) {
+      <app-generic-select [label]="'Statut'"
+                          [control]="projectFormGroup.controls['status']"
+                          [items]="status"/>
+    }
+
   </form>
 }

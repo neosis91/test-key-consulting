@@ -3,13 +3,13 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatCard} from '@angular/material/card';
 import {ProjetService} from './projet.service';
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
-import {MatChip, MatChipSet} from '@angular/material/chips';
+import {AsyncPipe, NgClass, NgTemplateOutlet} from '@angular/common';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {Projet} from './list.entities';
 import {MatDialog} from '@angular/material/dialog';
 import {AddProjetComponent} from './form-projet/add-projet/add-projet.component';
 import {EditProjetComponent} from './form-projet/edit-projet/edit-projet.component';
+import {StatusE} from './form-projet/form-projet.component';
 
 @Component({
   selector: 'app-list',
@@ -18,13 +18,12 @@ import {EditProjetComponent} from './form-projet/edit-projet/edit-projet.compone
     MatButton,
     MatCard,
     AsyncPipe,
-    MatChip,
-    MatChipSet,
     MatIconButton,
     MatMenuTrigger,
     MatMenu,
     MatMenuItem,
     NgTemplateOutlet,
+    NgClass,
 
   ],
   templateUrl: './list.component.html',
@@ -69,4 +68,6 @@ export class ListComponent {
   delete(projet: Projet) {
     this.projetService.delete(projet.id);
   }
+
+  protected readonly StatusE = StatusE;
 }
