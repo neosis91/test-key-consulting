@@ -1,11 +1,8 @@
-import {Component, input, OnInit} from '@angular/core';
-import {GenericInputComponent} from '../../../common/components/generic-input/generic-input.component';
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Projet} from '../list.entities';
-import {
-  GenericSelectComponent,
-  GenericSelectI
-} from '../../../common/components/generic-select/generic-select.component';
+import { Component, input, OnInit } from '@angular/core';
+import { GenericInputComponent } from '../../../common/components/generic-input/generic-input.component';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Projet } from '../list.entities';
+import { GenericSelectComponent, GenericSelectI } from '../../../common/components/generic-select/generic-select.component';
 
 export interface ProjectI {
   id?: FormControl<number | null>;
@@ -16,28 +13,23 @@ export interface ProjectI {
 }
 
 export enum StatusE {
-  PENDING = "PENDING",
-  WORKING = "WORKING",
-  TERMINATE = "TERMINATE"
+  PENDING = 'PENDING',
+  WORKING = 'WORKING',
+  TERMINATE = 'TERMINATE',
 }
 @Component({
-  imports: [
-    GenericInputComponent,
-    ReactiveFormsModule,
-    FormsModule,
-    GenericSelectComponent
-  ],
+  imports: [GenericInputComponent, ReactiveFormsModule, FormsModule, GenericSelectComponent],
   selector: 'app-form-projet',
   styleUrl: './form-projet.component.css',
-  templateUrl: './form-projet.component.html'
+  templateUrl: './form-projet.component.html',
 })
 export class FormProjetComponent implements OnInit {
-  projet = input<Projet>()
+  projet = input<Projet>();
   projectFormGroup: FormGroup<ProjectI> | undefined;
   status: GenericSelectI[] = [
-    {value: StatusE.PENDING, viewValue: 'En attente'},
-    {value: StatusE.WORKING, viewValue: 'En cours'},
-    {value: StatusE.TERMINATE, viewValue: 'Terminé'},
+    { value: StatusE.PENDING, viewValue: 'En attente' },
+    { value: StatusE.WORKING, viewValue: 'En cours' },
+    { value: StatusE.TERMINATE, viewValue: 'Terminé' },
   ];
   selectedValue: string | undefined = undefined;
 
@@ -53,7 +45,5 @@ export class FormProjetComponent implements OnInit {
     if (projet) {
       this.projectFormGroup.addControl('id', new FormControl(projet.id));
     }
-
   }
-
 }

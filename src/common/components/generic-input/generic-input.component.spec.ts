@@ -8,9 +8,8 @@ describe('GenericInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GenericInputComponent]
-    })
-    .compileComponents();
+      imports: [GenericInputComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GenericInputComponent);
     component = fixture.componentInstance;

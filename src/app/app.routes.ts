@@ -4,5 +4,5 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./list/list.component').then(c => c.ListComponent),
-  }
+  },
 ];

@@ -1,6 +1,6 @@
-import {Component, input} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {MatFormField, MatLabel, MatOption, MatSelect} from '@angular/material/select';
+import { Component, input } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatLabel, MatOption, MatSelect } from '@angular/material/select';
 
 export interface GenericSelectI {
   value: string;
@@ -8,15 +8,9 @@ export interface GenericSelectI {
 }
 
 @Component({
-  imports: [
-    MatFormField,
-    MatLabel,
-    MatOption,
-    MatSelect,
-    ReactiveFormsModule
-  ],
+  imports: [MatFormField, MatLabel, MatOption, MatSelect, ReactiveFormsModule],
   selector: 'app-generic-select',
-  templateUrl: './generic-select.component.html'
+  templateUrl: './generic-select.component.html',
 })
 export class GenericSelectComponent {
   label = input.required<string>();
