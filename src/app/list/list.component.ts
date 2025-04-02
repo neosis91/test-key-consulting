@@ -7,8 +7,6 @@ import {AsyncPipe, NgClass, NgTemplateOutlet} from '@angular/common';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {Projet} from './list.entities';
 import {MatDialog} from '@angular/material/dialog';
-import {AddProjetComponent} from './form-projet/add-projet/add-projet.component';
-import {EditProjetComponent} from './form-projet/edit-projet/edit-projet.component';
 import {StatusE} from './form-projet/form-projet.component';
 
 @Component({
@@ -34,10 +32,11 @@ export class ListComponent {
   private readonly dialog: MatDialog = inject(MatDialog);
   $projets = this.projetService.$projets;
 
-  add() {
-    console.log('add');
+  async add() {
+    // boite dialogue chargée à la demande (verification dans les sources en mode console avec le navigateur)
+    const addProjetComponent = await import('./form-projet/add-projet/add-projet.component').then(c => c.AddProjetComponent);
     this.dialog
-      .open(AddProjetComponent, {
+      .open(addProjetComponent, {
         panelClass: ['w-full', 'h-full', 'md:w-[532px]', 'md:h-[476px]', 'flex', 'justify-center'],
       })
       .afterClosed().subscribe((project: Projet) => {
@@ -48,10 +47,11 @@ export class ListComponent {
     });
   }
 
-  edit(projet: Projet) {
+  async edit(projet: Projet) {
+    const editProjetComponent = await import('./form-projet/edit-projet/edit-projet.component').then(c => c.EditProjetComponent);
     console.log('projet edit: ', projet);
     this.dialog
-      .open(EditProjetComponent, {
+      .open(editProjetComponent, {
         panelClass: ['w-full', 'h-full', 'md:w-[532px]', 'md:h-[476px]', 'flex', 'justify-center'],
         data: {
           projet: projet

@@ -16,7 +16,6 @@ export interface GenericSelectI {
     ReactiveFormsModule
   ],
   selector: 'app-generic-select',
-  styleUrl: './generic-select.component.css',
   templateUrl: './generic-select.component.html'
 })
 export class GenericSelectComponent {
