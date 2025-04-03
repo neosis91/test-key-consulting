@@ -1,24 +1,19 @@
 <div class="container max-w-4xl mx-auto pt-10">
-  <div class="flex justify-between">
-    <div class="flex flex-col gap-1">
-  <span class="font-poppins font-medium text-xl text-neutral-900">
-    Liste des demandes
-  </span>
-      <span class="font-inter text-sm text-neutral-600">
-    Gérer les demandes d'autorisation de travaux.
-  </span>
-    </div>
+  <app-head [title]="'Liste des demandes'"
+            [subtitle]="'Gérer les demandes d\'autorisation de travaux.'">
+
+    <!-- pour utiliser un ng-content pour le test -->
     <button id="add" mat-flat-button class="rounded-sm bg-blue-600" (click)="add()">
       <mat-icon>add</mat-icon>
       <span class="font-inter text-sm font-medium">Ajouter</span>
     </button>
-  </div>
+  </app-head>
 
   @let projets = $projets | async;
   @for (projet of projets; track $index) {
-    <app-item [item]="projet" [matMenuPanel]="appMenu"/>
+    <app-item [item]="projet" [matMenuPanel]="appMenu" />
 
-    <!-- une seule instanciation du MatMenuPanel, plutot que une pour chaque item -->
+    <!-- une seule instanciation du MatMenuPanel, plutot que une pour chaque items -->
     <mat-menu #appMenu="matMenu">
       <ng-template matMenuContent let-projet="projet">
         <button id="edit" mat-menu-item (click)="edit(projet)">

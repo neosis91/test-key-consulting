@@ -8,10 +8,11 @@ import { Projet } from './list.entities';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusE } from './form-projet/form-projet.component';
 import { ItemComponent } from './item/item.component';
+import { HeadComponent } from './head/head.component';
 
 @Component({
   selector: 'app-list',
-  imports: [MatIcon, MatButton, AsyncPipe, MatMenu, MatMenuItem, MatMenuContent, ItemComponent],
+  imports: [MatIcon, MatButton, AsyncPipe, MatMenu, MatMenuItem, MatMenuContent, ItemComponent, HeadComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
