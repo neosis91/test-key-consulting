@@ -1,0 +1,9 @@
+<div class="flex justify-between">
+  <div class="flex flex-col gap-1">
+  <span class="font-poppins font-medium text-xl text-neutral-900">{{ title() }}</span>
+    @if (subtitle()) {
+      <span class="font-inter text-sm text-neutral-600">{{ subtitle() }}</span>
+    }
+  </div>
+  <ng-content />
+</div>
