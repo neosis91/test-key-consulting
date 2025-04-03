@@ -1,17 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatCard } from '@angular/material/card';
 import { ProjetService } from './projet.service';
-import { AsyncPipe, NgClass, UpperCasePipe } from '@angular/common';
-import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { AsyncPipe } from '@angular/common';
+import { MatMenu, MatMenuContent, MatMenuItem } from '@angular/material/menu';
 import { Projet } from './list.entities';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusE } from './form-projet/form-projet.component';
+import { ItemComponent } from './item/item.component';
 
 @Component({
   selector: 'app-list',
-  imports: [MatIcon, MatButton, MatCard, AsyncPipe, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem, NgClass, UpperCasePipe, MatMenuContent],
+  imports: [MatIcon, MatButton, AsyncPipe, MatMenu, MatMenuItem, MatMenuContent, ItemComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
