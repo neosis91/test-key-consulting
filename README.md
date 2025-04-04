@@ -19,6 +19,8 @@ npm start
 
 J'ai utilisé la dernière version d'Angular 19.2 avec Material, Tailwind et svg-icon.
 
+Je ne me suis pas attardé sur le côté responsive mais plus sur la partie technique et optimisations.
+
 J'ai créé la méthode get, mais pour le test technique, il n'est pas vraiment utile de l'appeler.
 
 Le projet a divers concepts que j'ai mis en place :
