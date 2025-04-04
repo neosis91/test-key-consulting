@@ -64,11 +64,11 @@ describe('ListComponent', () => {
     expect(projetServiceSpy.post).toHaveBeenCalledWith(mockProjet);
   });
 
-  it("devrait appeler put() après édition validée", async () => {
+  it('devrait appeler put() après édition validée', async () => {
     // GIVEN
     const mockProjet = { id: 1, name: 'Projet à éditer', status: StatusE.TERMINATE };
     const dialogRefMock = {
-      afterClosed: jest.fn().mockReturnValueOnce(of(mockProjet))
+      afterClosed: jest.fn().mockReturnValueOnce(of(mockProjet)),
     };
 
     dialogSpy.open.mockReturnValueOnce(dialogRefMock);
@@ -82,13 +82,12 @@ describe('ListComponent', () => {
       expect.any(Function),
       expect.objectContaining({
         panelClass: expect.arrayContaining(['w-full', 'md:w-[532px]']),
-        data: expect.objectContaining({ projet: mockProjet })
+        data: expect.objectContaining({ projet: mockProjet }),
       })
     );
     expect(projetServiceSpy.put).toHaveBeenCalledTimes(1);
     expect(projetServiceSpy.put).toHaveBeenCalledWith(mockProjet);
   });
-
 
   describe('Méthode delete()', () => {
     it("devrait appeler delete() du service avec l'id", () => {

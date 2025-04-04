@@ -4,33 +4,39 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
-S'assurer d'avoir node en version 20 et npm
-Les 2 commandes à lancer pour zxecuter le projet en local
+S'assurer d'avoir node en version 20, npm et angular installé globalement
+Les 2 commandes à lancer pour executer le projet en local
 
 ```bash
 npm i
 ```
 
 ```bash
-ng serve
+npm start
 ```
 
-## Code scaffolding
+## Comment j'ai construis le projet
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+J'ai utilisé la dernière version d'angular 19.2 avec material, tailwind et svg-icon.
 
-```bash
-ng generate component component-name
-```
+J'ai crée la méthode get mais pour le test technique, pas vraiment utile de l'appeler.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Le projet a divers concept que j'ai mis en place:
+ - la projection de contenu dans le head
+ - des components enfants, je n'ai pas fais au niveau atomique (ça reste un test)
+ - 1 seule instanciation du menu au lieu d'en avoir autant que de projets
+ - j'ai volontairement scindé add et edit pour la boite de dialogue et importé le même formulaire. Il y a des règles de validators dedans.
 
-```bash
-ng generate --help
-```
+Honnêtement, je ne sais pas jusqu'où je dois pousser le test et ce qui est vraiment attendu au final.
+J'ai fais le minimum de travail que moi j'aurais attendu quand je fais passé des entretiens pour mes devs. 
 
+J'ai rencontré une petite difficulté, tailwind dans sa nouvelle version sortie récemment, n'accepte plus le scss mais juste du css. J'ai du faire des petits ajustements pour material.
+
+
+## Worklow
 
 Les 3 parties suivantes sont intégrées dans un github workflow sur la branch main.
+Les tests E2E ne passeront pas dans le workflow car je n'ai pas de serveur pour le tester avec une pipeline. Ils sont testable en local.
 
 ## Linter et formatter
 

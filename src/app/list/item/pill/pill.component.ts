@@ -6,7 +6,7 @@ import { Projet } from '../../list.entities';
 @Component({
   selector: 'app-pill',
   imports: [UpperCasePipe, NgClass],
-  templateUrl: './pill.component.html'
+  templateUrl: './pill.component.html',
 })
 export class PillComponent {
   projet = input.required<Projet>();
