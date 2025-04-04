@@ -4,7 +4,7 @@ import { MatIcon } from '@angular/material/icon';
 import { ProjetService } from './projet.service';
 import { AsyncPipe } from '@angular/common';
 import { MatMenu, MatMenuContent, MatMenuItem } from '@angular/material/menu';
-import { Projet } from './list.entities';
+import { Project } from './list.entities';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusE } from './form-projet/form-projet.component';
 import { ItemComponent } from './item/item.component';
@@ -29,15 +29,15 @@ export class ListComponent {
         panelClass: ['w-full', 'h-full', 'md:w-[532px]', 'md:h-[476px]', 'flex', 'justify-center'],
       })
       .afterClosed()
-      .subscribe((project: Projet) => {
+      .subscribe((project: Project) => {
         if (project) {
           console.log('projectI: ', project);
-          this.projetService.post(project as Projet);
+          this.projetService.post(project as Project);
         }
       });
   }
 
-  async edit(projet: Projet) {
+  async edit(projet: Project) {
     const editProjetComponent = await import('./form-projet/edit-projet/edit-projet.component').then(c => c.EditProjetComponent);
     console.log('projet edit: ', projet);
     this.dialog
@@ -48,15 +48,15 @@ export class ListComponent {
         },
       })
       .afterClosed()
-      .subscribe((project: Projet) => {
+      .subscribe((project: Project) => {
         if (project) {
           console.log('projectI: ', project);
-          this.projetService.put(project as Projet);
+          this.projetService.put(project as Project);
         }
       });
   }
 
-  delete(projet: Projet) {
+  delete(projet: Project) {
     this.projetService.delete(projet.id);
   }
 

@@ -84,3 +84,7 @@ mode graphique
 ```bash
 npx playwright test --ui
 ```
+
+## Compodoc
+
+Une librairie que j'aime bien qui permet de générer une documentation technique. Très utile pour les nouveaux arrivants sur un projet ou pour diffuser de la documentation technique.

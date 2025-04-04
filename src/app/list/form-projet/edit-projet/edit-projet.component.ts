@@ -3,7 +3,7 @@ import { FormProjetComponent } from '../form-projet.component';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { MatDivider } from '@angular/material/divider';
 import { MatButton } from '@angular/material/button';
-import { Projet } from '../../list.entities';
+import { Project } from '../../list.entities';
 
 @Component({
   selector: 'app-edit-projet',
@@ -12,5 +12,5 @@ import { Projet } from '../../list.entities';
   styleUrl: './edit-projet.component.css',
 })
 export class EditProjetComponent {
-  readonly data: { projet: Projet } = inject(MAT_DIALOG_DATA);
+  readonly data: { projet: Project } = inject(MAT_DIALOG_DATA);
 }

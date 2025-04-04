@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Projet } from '../list.entities';
+import { Project } from '../list.entities';
 import { MatCard } from '@angular/material/card';
 import { StatusE } from '../form-projet/form-projet.component';
 import { MatMenuPanel, MatMenuTrigger } from '@angular/material/menu';
@@ -15,7 +15,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
   styleUrl: './item.component.css',
 })
 export class ItemComponent {
-  item = input.required<Projet>();
+  item = input.required<Project>();
   protected readonly StatusE = StatusE;
   matMenuPanel = input<MatMenuPanel | null>(null);
 }

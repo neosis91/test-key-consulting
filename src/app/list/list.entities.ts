@@ -1,6 +1,6 @@
 import { StatusE } from './form-projet/form-projet.component';
 
-export interface Projet {
+export interface Project {
   id: number;
   name: string;
   user: string;

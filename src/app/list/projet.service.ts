@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Projet } from './list.entities';
+import { Project } from './list.entities';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { StatusE } from './form-projet/form-projet.component';
 
@@ -7,24 +7,24 @@ import { StatusE } from './form-projet/form-projet.component';
   providedIn: 'root',
 })
 export class ProjetService {
-  private projets: BehaviorSubject<Projet[]> = new BehaviorSubject<Projet[]>([
+  private projets: BehaviorSubject<Project[]> = new BehaviorSubject<Project[]>([
     { id: 1, name: 'Projet de travaux lorem ipsum', user: 'John Doe', contract: 1534885932, status: StatusE.TERMINATE },
   ]);
-  public $projets: Observable<Projet[]> = this.projets.asObservable();
+  public $projets: Observable<Project[]> = this.projets.asObservable();
 
   // Récupérer tous les projets ()
-  getAll(): Projet[] {
+  getAll(): Project[] {
     return this.projets.value;
   }
 
-  post(projet: Projet): void {
+  post(projet: Project): void {
     const projets = this.projets.value;
     projet.id = projets.length + 1;
     projets.push(projet);
     this.projets.next(projets);
   }
 
-  put(projet: Projet): void {
+  put(projet: Project): void {
     const projets = this.projets.value;
     const index = projets.findIndex(p => p.id === projet.id);
     if (index > -1) {

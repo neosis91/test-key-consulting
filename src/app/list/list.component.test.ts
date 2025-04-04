@@ -4,7 +4,7 @@ import { ListComponent } from './list.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjetService } from './projet.service';
 import { of } from 'rxjs';
-import { Projet } from './list.entities';
+import { Project } from './list.entities';
 import { StatusE } from './form-projet/form-projet.component';
 
 describe('ListComponent', () => {
@@ -92,7 +92,7 @@ describe('ListComponent', () => {
   describe('Méthode delete()', () => {
     it("devrait appeler delete() du service avec l'id", () => {
       // GIVEN
-      const mockProjet = { id: 1, name: 'Projet à supprimer', status: StatusE.TERMINATE } as Projet;
+      const mockProjet = { id: 1, name: 'Projet à supprimer', status: StatusE.TERMINATE } as Project;
 
       // WHEN
       component.delete(mockProjet);

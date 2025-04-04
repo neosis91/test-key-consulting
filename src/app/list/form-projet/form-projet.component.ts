@@ -1,7 +1,7 @@
 import { Component, input, OnInit } from '@angular/core';
 import { GenericInputComponent } from '../../../common/components/generic-input/generic-input.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Projet } from '../list.entities';
+import { Project } from '../list.entities';
 import { GenericSelectComponent, GenericSelectI } from '../../../common/components/generic-select/generic-select.component';
 
 export interface ProjectI {
@@ -24,7 +24,7 @@ export enum StatusE {
   templateUrl: './form-projet.component.html',
 })
 export class FormProjetComponent implements OnInit {
-  projet = input<Projet>();
+  projet = input<Project>();
   projectFormGroup: FormGroup<ProjectI> | undefined;
   status: GenericSelectI[] = [
     { value: StatusE.PENDING, viewValue: 'En attente' },
