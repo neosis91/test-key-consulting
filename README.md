@@ -4,13 +4,16 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
-To start a local development server, run:
+S'assurer d'avoir node en version 20 et npm
+Les 2 commandes à lancer pour zxecuter le projet en local
+
+```bash
+npm i
+```
 
 ```bash
 ng serve
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 
@@ -42,9 +45,7 @@ Pour le lancer
 ng lint
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
+## Lancement des tests unitaires
 
 J'ai utilisé Jest pour ajouter 3 tests unitaires. C'est un petit projet, il n'y a pas trop d'intérêt à en mettre en place en vrai.
 J'ai mocké MatDialog et projetService pour faire mes 3 tests.
@@ -55,7 +56,7 @@ Pour lancer les tests:
 npm run test
 ```
 
-## Running end-to-end tests
+## Lancement des tests end-to-end
 
 Je suis à l'aise avec cypress mais j'avais très envie de tester playwright qui est la lib montante pour les test E2E. 
 Ce projet de test est aussi l'occasion pour moi de le découvrir.
