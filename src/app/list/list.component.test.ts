@@ -1,9 +1,9 @@
 // list.component.d.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListComponent } from './list.component';
-import { DialogPosition, MatDialog, MatDialogRef, MatDialogState } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ProjetService } from './projet.service';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Projet } from './list.entities';
 import { StatusE } from './form-projet/form-projet.component';
 
@@ -40,37 +40,65 @@ describe('ListComponent', () => {
     fixture.detectChanges();
   });
 
-  it("devrait appeler post() après ajout validé", async () => {
-    // Arrange
+  it('devrait appeler post() après ajout validé', async () => {
+    // GIVEN
+    const mockProjet = { id: 1, name: 'Projet à ajouter', status: StatusE.TERMINATE };
     const dialogRefMock = {
-      afterClosed: jest.fn().mockReturnValue(of(null)) // Valeur par défaut
+      afterClosed: jest.fn().mockReturnValueOnce(of(mockProjet)),
     };
 
-    const dialogSpy = {
-      open: jest.fn().mockReturnValue(dialogRefMock)
-    } as unknown as jest.Mocked<MatDialog>;
-    const mockProjet = { id: 1, name: 'Projet à ajouter', status: StatusE.TERMINATE };
-    dialogRefMock.afterClosed.mockReturnValueOnce(of(mockProjet));
+    dialogSpy.open.mockReturnValueOnce(dialogRefMock);
 
-    // Act
+    // WHEN
     await component.add();
 
-    // Assert
+    // THEN
+    expect(dialogSpy.open).toHaveBeenCalledTimes(1);
     expect(dialogSpy.open).toHaveBeenCalledWith(
-      expect.any(Function), // Vérifie le chargement dynamique
+      expect.any(Function),
       expect.objectContaining({
-        panelClass: expect.arrayContaining(['w-full', 'md:w-[532px]'])
+        panelClass: expect.arrayContaining(['w-full', 'md:w-[532px]']),
       })
     );
+    expect(projetServiceSpy.post).toHaveBeenCalledTimes(1);
     expect(projetServiceSpy.post).toHaveBeenCalledWith(mockProjet);
   });
 
+  it("devrait appeler put() après édition validée", async () => {
+    // GIVEN
+    const mockProjet = { id: 1, name: 'Projet à éditer', status: StatusE.TERMINATE };
+    const dialogRefMock = {
+      afterClosed: jest.fn().mockReturnValueOnce(of(mockProjet))
+    };
+
+    dialogSpy.open.mockReturnValueOnce(dialogRefMock);
+
+    // WHEN
+    await component.edit(mockProjet);
+
+    // THEN
+    expect(dialogSpy.open).toHaveBeenCalledTimes(1);
+    expect(dialogSpy.open).toHaveBeenCalledWith(
+      expect.any(Function),
+      expect.objectContaining({
+        panelClass: expect.arrayContaining(['w-full', 'md:w-[532px]']),
+        data: expect.objectContaining({ projet: mockProjet })
+      })
+    );
+    expect(projetServiceSpy.put).toHaveBeenCalledTimes(1);
+    expect(projetServiceSpy.put).toHaveBeenCalledWith(mockProjet);
+  });
+
+
   describe('Méthode delete()', () => {
     it("devrait appeler delete() du service avec l'id", () => {
+      // GIVEN
       const mockProjet = { id: 1, name: 'Projet à supprimer', status: StatusE.TERMINATE } as Projet;
 
+      // WHEN
       component.delete(mockProjet);
 
+      // THEN
       expect(projetServiceSpy.delete).toHaveBeenCalledWith(1);
     });
   });
